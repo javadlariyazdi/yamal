@@ -1,0 +1,159 @@
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: Rule
+log-level: info
+external-controller: 127.0.0.1:9090
+
+dns:
+  enable: true
+  listen: 0.0.0.0:53
+  default-nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+  nameserver:
+    - 8.8.8.8
+    - 1.1.1.1
+
+proxies:
+  - name: "Server1-SS"
+    type: ss
+    server: 147.45.178.200
+    port: 57456
+    cipher: chacha20-ietf-poly1305
+    password: c40641c1f89e7acb
+
+  - name: "Server2-VLESS"
+    type: vless
+    server: 135.148.152.106
+    port: 443
+    uuid: ea286109-d20f-415e-849e-4af20ab04b65
+    encryption: none
+    tls: true
+    servername: 147135001195.sec22org.com
+    network: tcp
+    alpn:
+      - h2
+      - http/1.1
+
+  - name: "Server3-VLESS"
+    type: vless
+    server: 5.180.45.226
+    port: 443
+    uuid: 8e4ec15c-af76-5076-adb3-03122327648b
+    encryption: none
+    tls: true
+    servername: zula.ir
+    network: ws
+    ws-opts:
+      path: /vless
+      headers:
+        Host: 5.180.45.226
+    client-fingerprint: chrome
+    skip-cert-verify: true
+
+  - name: "Server4-VLESS"
+    type: vless
+    server: 172.67.207.27
+    port: 443
+    uuid: 15fad364-7af6-4403-9a7c-24c7201646ff
+    encryption: none
+    tls: true
+    servername: sSSSsSs.TaIpEi108.DPDnS.ORg
+    network: ws
+    ws-opts:
+      path: /ISk6mbFfXf0Pa9zB9hTi5E8d
+      headers:
+        Host: sssssss.taipei108.dpdns.org
+    client-fingerprint: chrome
+    alpn:
+      - http/1.1
+    skip-cert-verify: true
+
+  - name: "Server5-VLESS"
+    type: vless
+    server: www.speedtest.net
+    port: 443
+    uuid: 4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5
+    encryption: none
+    tls: true
+    servername: akbar.tas-bazi.com
+    network: xhttp
+    ws-opts:
+      path: /tas
+      headers:
+        Host: akbar.tas-bazi.com
+    alpn:
+      - h2
+    client-fingerprint: chrome
+    skip-cert-verify: true
+
+  - name: "Server6-Trojan"
+    type: trojan
+    server: 104.248.18.1
+    port: 1935
+    password: 6gZh2JbfhQ
+    sni: x1-germany-digitalocean-v2.devefun.org
+    network: tcp
+    tls: true
+    skip-cert-verify: true
+
+  - name: "Server7-VLESS"
+    type: vless
+    server: 91.99.123.99
+    port: 26892
+    uuid: 3e032a0f-b397-408e-8cc9-f428634612d9
+    encryption: none
+    network: tcp
+    ws-opts:
+      headers:
+        Host: exo.ir
+    tls: false
+
+  - name: "Server8-Trojan"
+    type: trojan
+    server: 109.234.211.66
+    port: 8443
+    password: trojan
+    sni: store.timimi.dpdns.org
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: store.timimi.dpdns.org
+    tls: true
+    skip-cert-verify: true
+
+  - name: "Server9-Trojan"
+    type: trojan
+    server: 104.18.42.163
+    port: 443
+    password: vip
+    sni: heihu880.pages.dev
+    network: ws
+    ws-opts:
+      path: /
+      headers:
+        Host: heihu880.pages.dev
+    tls: true
+    skip-cert-verify: true
+
+proxy-groups:
+  - name: "Auto"
+    type: select
+    proxies:
+      - Server1-SS
+      - Server2-VLESS
+      - Server3-VLESS
+      - Server4-VLESS
+      - Server5-VLESS
+      - Server6-Trojan
+      - Server7-VLESS
+      - Server8-Trojan
+      - Server9-Trojan
+
+rules:
+  - DOMAIN-SUFFIX,google.com,DIRECT
+  - DOMAIN-SUFFIX,ad.com,REJECT
+  - GEOIP,CN,DIRECT
+  - MATCH,Auto
