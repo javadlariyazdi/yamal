@@ -1,161 +1,1541 @@
-port: 7890
-socks-port: 7891
 allow-lan: false
-mode: Rule
-log-level: info
-external-controller: 127.0.0.1:9090
-
 dns:
+  default-nameserver:
+  - 8.8.8.8
+  - 1.1.1.1
   enable: true
   listen: 0.0.0.0:53
-  default-nameserver:
-    - 8.8.8.8
-    - 1.1.1.1
   nameserver:
-    - 8.8.8.8
-    - 1.1.1.1
-
+  - 8.8.8.8
+  - 1.1.1.1
+external-controller: 127.0.0.1:9090
+log-level: info
+mode: Rule
+port: 7890
 proxies:
-  - name: "Server1-SS"
-    type: ss
-    server: 147.45.178.200
-    port: 57456
-    cipher: chacha20-ietf-poly1305
-    password: c40641c1f89e7acb
-
-  - name: "Server2-VLESS"
-    type: vless
-    server: 135.148.152.106
-    port: 443
-    uuid: ea286109-d20f-415e-849e-4af20ab04b65
-    encryption: none
-    tls: true
-    servername: 147135001195.sec22org.com
-    network: tcp
-    alpn:
-      - h2
-      - http/1.1
-
-  - name: "Server3-VLESS"
-    type: vless
-    server: 5.180.45.226
-    port: 443
-    uuid: 8e4ec15c-af76-5076-adb3-03122327648b
-    encryption: none
-    tls: true
-    servername: zula.ir
-    network: ws
-    ws-opts:
-      path: /vless
-      headers:
-        Host: 5.180.45.226
-    client-fingerprint: chrome
-    skip-cert-verify: true
-
-  - name: "Server4-VLESS"
-    type: vless
-    server: 172.67.207.27
-    port: 443
-    uuid: 15fad364-7af6-4403-9a7c-24c7201646ff
-    encryption: none
-    tls: true
-    servername: sSSSsSs.TaIpEi108.DPDnS.ORg
-    network: ws
-    ws-opts:
-      path: /ISk6mbFfXf0Pa9zB9hTi5E8d
-      headers:
-        Host: sssssss.taipei108.dpdns.org
-    client-fingerprint: chrome
-    alpn:
-      - http/1.1
-    skip-cert-verify: true
-
-  - name: "Server5-VLESS"
-    type: vless
-    server: www.speedtest.net
-    port: 443
-    uuid: 4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5
-    encryption: none
-    tls: true
-    servername: akbar.tas-bazi.com
-    network: xhttp
-    ws-opts:
-      path: /tas
-      headers:
-        Host: akbar.tas-bazi.com
-    alpn:
-      - h2
-    client-fingerprint: chrome
-    skip-cert-verify: true
-
-  - name: "Server6-Trojan"
-    type: trojan
-    server: 104.248.18.1
-    port: 1935
-    password: 6gZh2JbfhQ
-    sni: x1-germany-digitalocean-v2.devefun.org
-    network: tcp
-    tls: true
-    skip-cert-verify: true
-
-  - name: "Server7-VLESS"
-    type: vless
-    server: 91.99.123.99
-    port: 26892
-    uuid: 3e032a0f-b397-408e-8cc9-f428634612d9
-    encryption: none
-    network: tcp
-    ws-opts:
-      headers:
-        Host: exo.ir
-    tls: false
-
-  - name: "Server8-Trojan"
-    type: trojan
-    server: 109.234.211.66
-    port: 8443
-    password: trojan
-    sni: store.timimi.dpdns.org
-    network: ws
-    ws-opts:
-      path: /
-      headers:
-        Host: store.timimi.dpdns.org
-    tls: true
-    skip-cert-verify: true
-
-  - name: "Server9-Trojan"
-    type: trojan
-    server: 104.18.42.163
-    port: 443
-    password: vip
-    sni: heihu880.pages.dev
-    network: ws
-    ws-opts:
-      path: /
-      headers:
-        Host: heihu880.pages.dev
-    tls: true
-    skip-cert-verify: true
-
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-0
+  network: ws
+  port: 443
+  server: 45.89.52.193
+  servername: zula.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 3bf13892-1d0f-5674-8b20-e978212ba96b
+  ws-opts:
+    headers:
+      Host: 45.89.52.193
+    path: /vless
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-1
+  network: ws
+  port: 443
+  server: 5.180.45.226
+  servername: zula.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 8e4ec15c-af76-5076-adb3-03122327648b
+  ws-opts:
+    headers:
+      Host: 5.180.45.226
+    path: /vless
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-2
+  network: ws
+  port: 56504
+  server: opl.vip-senior.info
+  servername: speedtest.net
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 3588f520-67db-48b3-e80f-24f03a82e84e
+  ws-opts:
+    headers:
+      Host: opl.vip-senior.info
+    path: /@game_file2020---@l9lIIII---@game_file2020---@game_file2020---@game_file2020---@game_file2020
+- name: Trojan-3
+  network: ws
+  password: trojan
+  port: 443
+  server: 104.19.173.68
+  skip-cert-verify: true
+  sni: azadnet-9ya.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: azadnet-9ya.pages.dev
+    path: /?ed=2560
+- client-fingerprint: firefox
+  encryption: none
+  name: VLESS-4
+  network: ws
+  port: 443
+  server: all1.4qwertyuiopasdfghjklzxcvbnmmnbvcxzlkjhgfdsapoiuytrewq1234567890.com
+  servername: de2radin.4qwertyuiopasdfghjklzxcvbnmmnbvcxzlkjhgfdsapoiuytrewq1234567890.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: c4cd9656-81a7-4342-9c0f-959ad333acae
+  ws-opts:
+    headers:
+      Host: de2radin.4qwertyuiopasdfghjklzxcvbnmmnbvcxzlkjhgfdsapoiuytrewq1234567890.com
+    path: /ws?ed=2560
+- name: Trojan-5
+  network: ws
+  password: vip
+  port: 443
+  server: www.udemy.com
+  skip-cert-verify: true
+  sni: heihu880.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: heihu880.pages.dev
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-6
+  network: xhttp
+  port: 443
+  server: www.speedtest.net
+  servername: akbar.tas-bazi.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5
+  ws-opts:
+    headers:
+      Host: akbar.tas-bazi.com
+    path: /tas
+- name: Trojan-7
+  network: ws
+  password: wb6368
+  port: 2087
+  server: 92.243.75.49
+  skip-cert-verify: true
+  sni: hsdgbuys.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: hsdgbuys.pages.dev
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-8
+  network: httpupgrade
+  port: 2087
+  server: 104.26.15.16
+  servername: rEDzOnE.MirAcLehEaRTbIt.ICu.
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: e1546109-8db2-4949-bd40-cd15928ec5c9
+  ws-opts:
+    headers:
+      Host: rEDzOnE.MirAcLehEaRTbIt.ICu.
+    path: /@V2RayyNGvpn?ed=512
+- cipher: chacha20-ietf-poly1305
+  name: SS-9
+  password: QCXDxuDlTTMD7jtgHUjIoj
+  port: 8080
+  server: 45.87.175.170
+  type: ss
+- name: Trojan-10
+  network: ws
+  password: '123456'
+  port: 8443
+  server: 104.25.165.81
+  skip-cert-verify: true
+  sni: top-azx.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: top-azx.pages.dev
+    path: /
+- name: Trojan-11
+  network: ws
+  password: Aimer
+  port: 8443
+  server: 46.254.93.243
+  skip-cert-verify: true
+  sni: epmk.ambercc.filegear-sg.me
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: epmk.ambercc.filegear-sg.me
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: VLESS-12
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: XThpnyytziagvWMwmxGuSQ0nqfUw2sosq49F2fUEzmk
+    short-id: 0ca18da2c8f9
+    spx: /
+  server: 2.56.126.76
+  servername: yahoo.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 7f97131b-0d9d-4be9-b7b4-3fa21403cffa
+- client-fingerprint: firefox
+  encryption: none
+  name: VLESS-13
+  network: ws
+  port: 443
+  server: 154.92.9.30
+  servername: simorgh.hpcode.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: ec8a65ad-aafc-4095-9b8c-ea10890ca629
+  ws-opts:
+    headers:
+      Host: simorgh.hpcode.ir
+    path: /Javid-SHAH-KingRezaPahlavi/?ed=2560
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-14
+  network: grpc
+  port: 8880
+  server: 95.164.45.94
+  servername: TABRIZ.NET
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+- alterId: 0
+  cipher: auto
+  name: VMESS-15
+  network: tcp
+  port: 15709
+  server: channel.dollardoon.com
+  tls: false
+  type: vmess
+  uuid: 4ac39e8a-6d5c-48bb-b0d0-f633c829113e
+- name: Trojan-16
+  network: ws
+  password: Aimer
+  port: 2083
+  server: 27.50.48.126
+  skip-cert-verify: true
+  sni: tyep.esslh.filegear-sg.me
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: tyep.esslh.filegear-sg.me
+    path: /
+- name: Trojan-17
+  network: ws
+  password: 100b5163-fbb8-425d-9621-44d119555aa4
+  port: 2053
+  server: 104.21.75.120
+  skip-cert-verify: true
+  sni: MaHSA2.cffoRm.SitE
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: mahsa2.cfform.site
+    path: /trWCuRIwSn9S6fDZGE/c2hpcmVuLnlhZW1pa28uZ2dmZi5uZXQ=
+- name: Trojan-18
+  network: ws
+  password: vip
+  port: 2053
+  server: 104.18.12.229
+  skip-cert-verify: true
+  sni: heihu880.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: heihu880.pages.dev
+    path: /
+- name: Trojan-19
+  network: ws
+  password: JsheihIhuy-7-282%2B2%2B
+  port: 2087
+  server: 172.66.44.253
+  skip-cert-verify: true
+  sni: NET-ACcOunt02.PaGeS.deV
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: net-account02.pages.dev
+    path: /truU4CIf2PazndGkew?ed=2560
+- name: Trojan-20
+  network: ws
+  password: vip
+  port: 443
+  server: 104.18.42.163
+  skip-cert-verify: true
+  sni: heihu880.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: heihu880.pages.dev
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-21
+  network: ws
+  port: 8080
+  server: 172.67.73.163
+  servername: 172.67.73.163
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 0eb83f3e-7b95-427a-8952-abedfca1869f
+  ws-opts:
+    headers:
+      Host: QW.VU6d72nt9y.zULaiR.orG.
+    path: /
+- cipher: chacha20-ietf-poly1305
+  name: SS-22
+  password: 4a2rfixophdjffa8KVA4Aa
+  port: 8080
+  server: 45.87.175.157
+  type: ss
+- name: Trojan-23
+  network: ws
+  password: vip
+  port: 443
+  server: 104.18.42.163
+  skip-cert-verify: true
+  sni: heihu880.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: heihu880.pages.dev
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-24
+  network: xhttp
+  port: 443
+  server: www.speedtest.net
+  servername: lama.tas-bazi.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5
+  ws-opts:
+    headers:
+      Host: lama.tas-bazi.com
+    path: /tas
+- cipher: chacha20-ietf-poly1305
+  name: SS-25
+  password: QCXDxuDlTTMD7jtgHUjIoj
+  port: 8080
+  server: 45.87.175.165
+  type: ss
+- client-fingerprint: firefox
+  encryption: none
+  name: VLESS-26
+  network: xhttp
+  port: 443
+  server: www.speedtest.net
+  servername: ashil.tas-bazi.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5
+  ws-opts:
+    headers:
+      Host: ashil.tas-bazi.com
+    path: /tas
+- name: Trojan-27
+  network: ws
+  password: Aimer
+  port: 8443
+  server: 46.254.93.243
+  skip-cert-verify: true
+  sni: epmk.ambercc.filegear-sg.me
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: epmk.ambercc.filegear-sg.me
+    path: /
+- name: Trojan-28
+  network: ws
+  password: vip
+  port: 2087
+  server: time.is
+  skip-cert-verify: true
+  sni: heihu880.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: heihu880.pages.dev
+    path: /
+- cipher: chacha20-ietf-poly1305
+  name: SS-29
+  password: 4a2rfixophdjffa8KVA4Aa
+  port: 8080
+  server: 45.158.171.150
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-30
+  network: tcp
+  port: 443
+  server: 91.99.129.82
+  servername: 91.99.129.82
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: f73e9865-80c3-45ba-8391-597139c37bdc
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: VLESS-31
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: WjYNpDmgqI19JN7jmgTW6lAHUGN1YEa4yc9Bwqs9w0Y
+    short-id: 0f8bc395378e80
+    spx: /
+  server: 91.107.159.32
+  servername: yahoo.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 4c585027-6ef2-42ff-899b-06a97b1ee7bb
+- name: Trojan-32
+  network: ws
+  password: 100b5163-fbb8-425d-9621-44d119555aa4
+  port: 2053
+  server: 104.21.75.120
+  skip-cert-verify: true
+  sni: MaHSA2.cffoRm.SitE
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: mahsa2.cfform.site
+    path: /trWCuRIwSn9S6fDZGE/c2hpcmVuLnlhZW1pa28uZ2dmZi5uZXQ=
+- alterId: 0
+  cipher: auto
+  name: VMESS-33
+  network: tcp
+  port: 15709
+  server: channel.dollardoon.com
+  tls: false
+  type: vmess
+  uuid: 4ac39e8a-6d5c-48bb-b0d0-f633c829113e
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-34
+  network: ws
+  port: 80
+  server: 104.16.53.11
+  servername: 104.16.53.11
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: cf04e45a-13e9-4603-a39b-d38c934cdfc5
+  ws-opts:
+    headers:
+      Host: bAlaNCED-eDuCAtiON.onEeAt.CO.
+    path: /?ed
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-35
+  network: xhttp
+  port: 443
+  server: www.speedtest.net
+  servername: fariba.tas-bazi.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5
+  ws-opts:
+    headers:
+      Host: fariba.tas-bazi.com
+    path: /tas
+- alterId: 0
+  cipher: auto
+  name: VMESS-36
+  network: ws
+  port: 80
+  server: ov-germany7.09vpn.com
+  tls: false
+  type: vmess
+  uuid: 8b7ec98d-c291-4034-9719-e6d62051636a
+  ws-opts:
+    headers:
+      Host: ''
+    path: /vmess/
+- name: Trojan-37
+  network: ws
+  password: Aimer
+  port: 2083
+  server: 135.84.74.254
+  skip-cert-verify: true
+  sni: epmk.ambercc.filegear-sg.me
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: epmk.ambercc.filegear-sg.me
+    path: /
+- cipher: chacha20-ietf-poly1305
+  name: SS-38
+  password: oZIoA69Q8yhcQV8ka3Pa3A
+  port: 8080
+  server: 45.87.175.28
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-39
+  password: 1RWwXhwfAB5gAEozU4G2Pg
+  port: 8080
+  server: 45.87.175.199
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-40
+  password: cvII85TrW6n0OGyfpHVS1u
+  port: 8080
+  server: 45.87.175.190
+  type: ss
+- name: Trojan-41
+  network: ws
+  password: f282b878-8711-45a1-8c69-5564172123c1
+  port: 443
+  server: 172.67.181.173
+  skip-cert-verify: true
+  sni: vpn.stupidworld.web.id
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: vpn.stupidworld.web.id
+    path: /Stupid-World/103.106.228.126-2053
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: VLESS-42
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: fTRUKzSjDld9OYMUxx641aP9W1n_aIp_UswZghdjzwM
+    short-id: 78ce8c07a9235a
+    spx: /
+  server: 159.69.118.125
+  servername: www.psnapptapsi.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: b3164e0a-f76a-4bb2-83b9-8f385488e836
+- name: Trojan-43
+  network: ws
+  password: Aimer
+  port: 2083
+  server: 135.84.74.254
+  skip-cert-verify: true
+  sni: epmk.ambercc.filegear-sg.me
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: epmk.ambercc.filegear-sg.me
+    path: /
+- name: Trojan-44
+  network: ws
+  password: vip
+  port: 443
+  server: 104.26.2.223
+  skip-cert-verify: true
+  sni: heihu880.pages.dev
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: heihu880.pages.dev
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: VLESS-45
+  network: tcp
+  port: 25888
+  reality-opts:
+    public-key: 1wWJ_HJdLChMyEqb1agU0pQr26966K5SK4u7ehst-VQ
+    short-id: 8c5f97c86a710a
+    spx: /
+  server: 62.60.244.252
+  servername: www.microsoft.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 301d049f-26d9-15ba-a83c-b1d5111d4444
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: VLESS-46
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: fTRUKzSjDld9OYMUxx641aP9W1n_aIp_UswZghdjzwM
+    short-id: 78ce8c07a9235a
+    spx: /
+  server: 159.69.118.125
+  servername: www.psnapptapsi.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: b3164e0a-f76a-4bb2-83b9-8f385488e836
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-47
+  network: xhttp
+  port: 80
+  server: 151.101.1.208
+  servername: 151.101.1.208
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 59ff134e-a056-46f0-aac5-5c3704089d35
+  ws-opts:
+    headers:
+      Host: moayfidyour-name.global.ssl.fastly.net
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-48
+  network: tcp
+  port: 28495
+  reality-opts:
+    public-key: KXMH8QzaRa66F6GxOR1CanBunO2uHdJvri2zCbar2RQ
+    short-id: 0ecc2c1392
+    spx: /
+  server: 185.33.24.229
+  servername: dl.google.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 7e296434-2d17-48d3-928d-19eaa34aecb1
+- cipher: chacha20-ietf-poly1305
+  name: SS-49
+  password: QCXDxuDlTTMD7jtgHUjIoj
+  port: 8080
+  server: 45.87.175.171
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-50
+  network: ws
+  port: 8080
+  server: 172.67.73.163
+  servername: 172.67.73.163
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 51fda508-20aa-419e-b4c3-3a6202411412
+  ws-opts:
+    headers:
+      Host: 18.6na7PY43IT.zuLaiR.Org.
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-51
+  network: tcp
+  port: 50424
+  server: 116.203.29.106
+  servername: 116.203.29.106
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: b4473fe7-6e2e-441e-8b2e-a8baec8a5172
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-52
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: guQofANvA8Ia_uVwhRMriU09zudRTM_k7Nr498g161s
+    short-id: a31a8d04622560
+    spx: /
+  server: 51.38.64.196
+  servername: yahoo.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: fac1c66f-3ba3-4d24-8ae8-d6049d949898
+- name: Trojan-53
+  network: ws
+  password: Aimer
+  port: 81
+  server: 45.80.209.25
+  skip-cert-verify: true
+  sni: epmk.ambercc.filegear-sg.me
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: epmk.ambercc.filegear-sg.me
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-54
+  network: tcp
+  port: 443
+  server: 91.99.129.82
+  servername: 91.99.129.82
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: f73e9865-80c3-45ba-8391-597139c37bdc
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-55
+  network: ws
+  port: 80
+  server: tgju.org
+  servername: eLOQuENt-caSE.ZUlaIR.orG.
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 76ad8213-4617-47eb-92cc-5392b39b45ce
+  ws-opts:
+    headers:
+      Host: eLOQuENt-caSE.ZUlaIR.orG.
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-56
+  network: ws
+  port: 80
+  server: tgju.org
+  servername: tgju.org
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 76ad8213-4617-47eb-92cc-5392b39b45ce
+  ws-opts:
+    headers:
+      Host: eLOQuENt-caSE.ZUlaIR.orG.
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-57
+  network: xhttp
+  port: 80
+  server: server2.ultra-irancell.com
+  servername: server2.ultra-irancell.com
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: a707317c-2236-41c0-9c00-63e866401b25
+  ws-opts:
+    headers:
+      Host: turboo-server.org
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-58
+  network: ws
+  port: 80
+  server: 51.38.232.101
+  servername: 51.38.232.101
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 21389e1d-e91f-4156-93ee-4ed2c321e37c
+  ws-opts:
+    headers:
+      Host: 51.38.232.101
+    path: /vless/
+- cipher: chacha20-ietf-poly1305
+  name: SS-59
+  password: mps3FwmDjLrWaOVg
+  port: 443
+  server: series-a1.samanehha.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-60
+  network: ws
+  port: 80
+  server: 104.16.53.11
+  servername: 104.16.53.11
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 174a144b-5665-41d6-8d7b-06e5a78fe573
+  ws-opts:
+    headers:
+      Host: keEn-iNteNTion.oNeeAT.Co.
+    path: /?ed
+- cipher: chacha20-ietf-poly1305
+  name: SS-61
+  password: 1xO2cqPazqjGfCfd
+  port: 443
+  server: freakconfig13.felafel.org
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-62
+  network: httpupgrade
+  port: 443
+  server: 199.34.229.68
+  servername: uk1.blackismyfavorite.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 9ca79e0a-2c5c-4ac8-90e6-6642e41e6189
+  ws-opts:
+    headers:
+      Host: uk1.blackismyfavorite.ir
+    path: /XRAYVPNHTTPUPGRADE
+- cipher: chacha20-ietf-poly1305
+  name: SS-63
+  password: u17T3BvpYaaiuW2c
+  port: 443
+  server: series-a2-mec.samanehha.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-64
+  network: ws
+  port: 443
+  server: 194.147.34.72
+  servername: zula.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 9d282158-511f-5a3e-a27f-fa3655b5972e
+  ws-opts:
+    headers:
+      Host: 194.147.34.72
+    path: /vless
+- name: Trojan-65
+  network: tcp
+  password: AdPYCBfMUM
+  port: 443
+  server: ru2.asc-sam.ir
+  skip-cert-verify: true
+  sni: journalofbigdata.springeropen.com
+  tls: true
+  type: trojan
+- cipher: chacha20-ietf-poly1305
+  name: SS-66
+  password: u17T3BvpYaaiuW2c
+  port: 443
+  server: series-a2-mec.samanehha.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  flow: xtls-rprx-vision
+  name: VLESS-67
+  network: tcp
+  port: 443
+  reality-opts:
+    public-key: pkIWxbuPAasjatPaHnAaTnCxVj1RkDFsJEWpLUTOcWY
+    short-id: 9917d2350096
+    spx: /
+  server: 92.60.78.221
+  servername: www.tradingview.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 6897c181-24b1-4880-8660-e6c5c7ee13c7
+- cipher: chacha20-ietf-poly1305
+  name: SS-68
+  password: u17T3BvpYaaiuW2c
+  port: 443
+  server: series-a2-mec.varzesh360.co
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-69
+  password: 69MUii7VDwMqh7Hz
+  port: 443
+  server: admin.c4.webramz.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-70
+  network: tcp
+  port: 10195
+  server: 91.99.194.113
+  servername: 91.99.194.113
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 913a8cd8-11ab-4d16-a6f7-c7b88d7a592e
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-71
+  network: xhttp
+  port: 443
+  server: www.speedtest.net
+  servername: ali.tas-bazi.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 4e0a435a-65d6-4e4e-a4ed-dfa8bdd732f5
+  ws-opts:
+    headers:
+      Host: ali.tas-bazi.com
+    path: /tas
+- cipher: chacha20-ietf-poly1305
+  name: SS-72
+  password: Bog0ELmMM9DSxDdQ
+  port: 443
+  server: admin.c3.webramz.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-73
+  network: tcp
+  port: 2080
+  reality-opts:
+    public-key: L3lJWdU7mHijSkNaNt-m29OYnKnHvHYRxg2Y8XXFdng
+    short-id: bf517367267685
+    spx: /
+  server: mar13t.rasmar1400.com
+  servername: dash.cloudflare.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: bea34b73-3244-475b-b914-7bb80e1cda91
+- cipher: chacha20-ietf-poly1305
+  name: SS-74
+  password: 1xO2cqPazqjGfCfd
+  port: 443
+  server: admin.c1.webramz.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-75
+  network: grpc
+  port: 443
+  server: 92.53.188.36
+  servername: pqh23v4.hiddendom.shop
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 401374e6-df77-41fb-f638-dad8184f175b
+- name: Trojan-76
+  network: ws
+  password: 4b33b482-25bc-49e4-b866-878c914d945a
+  port: 443
+  server: 104.21.7.147
+  skip-cert-verify: true
+  sni: 44444444.HuanGShANG.DPDNs.oRG
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: 44444444.huangshang.dpdns.org
+    path: /kzefUfBUzMsQY6zyyQCjn8kmnN0ehd
+- cipher: chacha20-ietf-poly1305
+  name: SS-77
+  password: cvII85TrW6n0OGyfpHVS1u
+  port: 8080
+  server: 45.87.175.185
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-78
+  network: httpupgrade
+  port: 443
+  server: 199.34.229.63
+  servername: uk1.blackismyfavorite.ir
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 9ca79e0a-2c5c-4ac8-90e6-6642e41e6189
+  ws-opts:
+    headers:
+      Host: uk1.blackismyfavorite.ir
+    path: /XRAYVPNHTTPUPGRADE
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-79
+  network: xhttp
+  port: 80
+  server: fas2.pokerad.top
+  servername: fas2.pokerad.top
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 08451233-539f-489f-9a79-b3b5b1e9d6d0
+  ws-opts:
+    headers:
+      Host: taha2.com
+    path: /
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-80
+  network: grpc
+  port: 443
+  server: 92.53.188.36
+  servername: pqh23v4.hiddendom.shop
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 401374e6-df77-41fb-f638-dad8184f175b
+- name: Trojan-81
+  network: ws
+  password: 6757b7d6-fa32-4708-b5d1-30e3cf928b51
+  port: 443
+  server: 172.67.135.23
+  skip-cert-verify: true
+  sni: ZZzzzZZ.890601.XYZ
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: zzzzzzz.890601.xyz
+    path: /l96MZ8se5Kl2p8BiMhP42l
+- name: Trojan-82
+  network: ws
+  password: c7f423b7-ced8-43da-a9ae-e906cb4a222c
+  port: 443
+  server: 104.21.89.221
+  skip-cert-verify: true
+  sni: DdDdddDDdF.999824.Xyz
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: dddddddddf.999824.xyz
+    path: /dwPcFaK3QxWRQTqot0LE
+- cipher: chacha20-ietf-poly1305
+  name: SS-83
+  password: 51yloQC8D9w1Wae7FHtI65
+  port: 48172
+  server: 20.91.252.21
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-84
+  password: cvII85TrW6n0OGyfpHVS1u
+  port: 8080
+  server: 45.87.175.200
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-85
+  password: WstuSnlu4ieA9M0L
+  port: 443
+  server: admin.c2.webramz.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-86
+  network: grpc
+  port: 8880
+  server: 45.82.251.185
+  servername: 45.82.251.185
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-87
+  network: grpc
+  port: 42030
+  reality-opts:
+    public-key: ZyEwIOp_n6SemqIK57145NS5UWz3-BrL_fRob9qx4Tk
+    short-id: '15'
+    spx: /
+  server: 209.38.202.192
+  servername: journalofbigdata.springeropen.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: f6bd0b57-1e1c-4dd1-8f1c-939cb96bdb0a
+- cipher: chacha20-ietf-poly1305
+  name: SS-88
+  password: u17T3BvpYaaiuW2c
+  port: 443
+  server: series-a2-mec.samanehha.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-89
+  network: ws
+  port: 443
+  server: 172.67.175.139
+  servername: ggggggggggh.859886.xyz
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 9486ff17-2481-40c7-a5c4-d0d307de2509
+  ws-opts:
+    headers:
+      Host: ggggggggggh.859886.xyz
+    path: /xkqDvmTtFTfJdU239ar
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-90
+  network: ws
+  port: 80
+  server: pq-unitedstates1.09vpn.com
+  servername: pq-unitedstates1.09vpn.com
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: 8b23d267-1367-434f-9682-29fd54914ccf
+  ws-opts:
+    headers:
+      Host: pq-unitedstates1.09vpn.com
+    path: /vless/
+- cipher: chacha20-ietf-poly1305
+  name: SS-91
+  password: 51yloQC8D9w1Wae7FHtI65
+  port: 48172
+  server: azure-sto.edgeservers.org
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-92
+  network: grpc
+  port: 8880
+  server: 95.164.45.94
+  servername: TABRIZ.NET
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-93
+  network: tcp
+  port: 443
+  server: 147135004002.sec20org.com
+  servername: 147135004002.sec20org.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-94
+  network: grpc
+  port: 8880
+  server: 185.231.205.234
+  servername: 185.231.205.234
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: df0680ca-e43c-498d-ed86-8e196eedd012
+- cipher: chacha20-ietf-poly1305
+  name: SS-95
+  password: Bog0ELmMM9DSxDdQ
+  port: 443
+  server: series-a2-me.varzesh360.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-96
+  network: ws
+  port: 443
+  server: 104.21.84.58
+  servername: sSSsSssSSssXXXxXCCCCC.Iran2035.DPDNs.OrG
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 57c4f3b6-19bd-493e-bf85-aa4a92cc20e7
+  ws-opts:
+    headers:
+      Host: sssssssssssxxxxxccccc.iran2035.dpdns.org
+    path: /F8LFEGnyMsJ1ullAwKQmIGQ02idh
+- cipher: chacha20-ietf-poly1305
+  name: SS-97
+  password: u17T3BvpYaaiuW2c
+  port: 443
+  server: series-a2-mec.varzesh360.co
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-98
+  password: Bog0ELmMM9DSxDdQ
+  port: 443
+  server: freakconfig.usecharge.ir
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-99
+  password: mps3FwmDjLrWaOVg
+  port: 443
+  server: series-a2.samanehha.co
+  type: ss
+- name: Trojan-100
+  network: ws
+  password: 509ed9b7-8d64-4204-8ec8-6b749020ac3f
+  port: 443
+  server: 104.21.3.189
+  skip-cert-verify: true
+  sni: CcCVfGTyU.89060004.Xyz
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: cccvfgtyu.89060004.xyz
+    path: /5MkU0nARgHwk3aXBStn7
+- cipher: chacha20-ietf-poly1305
+  name: SS-101
+  password: AcGFEsMR6c07Txux
+  port: 443
+  server: admin.c2.havij.co
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-102
+  password: Bog0ELmMM9DSxDdQ
+  port: 443
+  server: series-a2-me.varzesh360.co
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-103
+  password: WstuSnlu4ieA9M0L
+  port: 443
+  server: admin.c2.webramz.co
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-104
+  password: mps3FwmDjLrWaOVg
+  port: 443
+  server: series-a2.samanehha.co
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-105
+  password: Bog0ELmMM9DSxDdQ
+  port: 443
+  server: series-a2-me.samanehha.co
+  type: ss
+- cipher: chacha20-ietf-poly1305
+  name: SS-106
+  password: mps3FwmDjLrWaOVg
+  port: 443
+  server: series-a2.samanehha.co
+  type: ss
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-107
+  network: ws
+  port: 443
+  server: 104.21.58.135
+  servername: aaaaaaaaaaaz.818185.xyz
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 9486ff17-2481-40c7-a5c4-d0d307de2509
+  ws-opts:
+    headers:
+      Host: aaaaaaaaaaaz.818185.xyz
+    path: /xkqDvmTtFTfJdU239ar
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-108
+  network: ws
+  port: 443
+  server: 104.21.83.113
+  servername: ggggggggggh.859886.xyz
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 9486ff17-2481-40c7-a5c4-d0d307de2509
+  ws-opts:
+    headers:
+      Host: ggggggggggh.859886.xyz
+    path: /xkqDvmTtFTfJdU239ar
+- name: Trojan-109
+  network: ws
+  password: a7b22c05-27fd-4a76-8896-2aebaf4cf3a1
+  port: 443
+  server: 172.67.173.64
+  skip-cert-verify: true
+  sni: TttTtTYU.2032.PP.UA
+  tls: true
+  type: trojan
+  ws-opts:
+    headers:
+      Host: ttttttyu.2032.pp.ua
+    path: /mXG7Hx4Y37nTr2Hdmy903WCeD85F1b
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-110
+  network: tcp
+  port: 450
+  server: 85.9.99.89
+  servername: 85.9.99.89
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: db67312c-8388-470c-a8aa-9995732a6f8d
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-111
+  network: grpc
+  port: 8880
+  server: 45.82.251.184
+  servername: 45.82.251.184
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-112
+  network: ws
+  port: 80
+  server: pq-unitedstates1.09vpn.com
+  servername: pq-unitedstates1.09vpn.com
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: b131cb41-4f46-4827-9ed8-b6c0572dffcf
+  ws-opts:
+    headers:
+      Host: pq-unitedstates1.09vpn.com
+    path: /vless/
+- client-fingerprint: chrome
+  encryption: none
+  grpc-opts:
+    grpc-service-name: /
+  name: VLESS-113
+  network: grpc
+  port: 8880
+  server: 45.82.251.122
+  servername: 45.82.251.122
+  skip-cert-verify: true
+  tls: false
+  type: vless
+  uuid: e4824193-4f54-453b-d037-88368e85ef0e
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-114
+  network: tcp
+  port: 443
+  server: 15.204.200.208
+  servername: 147135004002.sec20org.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-115
+  network: tcp
+  port: 443
+  server: 147.135.4.2
+  servername: 147135004002.sec20org.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+- alterId: 0
+  cipher: auto
+  name: VMESS-116
+  network: tcp
+  port: 42610
+  server: 51.79.86.182
+  tls: false
+  type: vmess
+  uuid: e0957ca6-f613-4017-ff3c-effd1da8871a
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-117
+  network: tcp
+  port: 443
+  server: 15.204.200.208
+  servername: 147135004002.sec20org.com
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: 54694a33-a8dc-47dd-bc38-acd3971e0055
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-118
+  network: ws
+  port: 443
+  server: 104.21.61.229
+  servername: WwSsDe.FreEVPN2027.DPdNS.oRG
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: c891d9fe-c4eb-4526-94e0-d9bf841c572a
+  ws-opts:
+    headers:
+      Host: wwssde.freevpn2027.dpdns.org
+    path: /YVOu6Dbaf1WT6O9LnD
+- client-fingerprint: chrome
+  encryption: none
+  name: VLESS-119
+  network: ws
+  port: 443
+  server: 104.21.57.206
+  servername: ddDDDDdDDrrrtTYu.4444926.XYz
+  skip-cert-verify: true
+  tls: true
+  type: vless
+  uuid: dc50eb1d-244d-4711-b168-a101a5e6fb1b
+  ws-opts:
+    headers:
+      Host: dddddddddrrrttyu.4444926.xyz
+    path: /uCzP57N1QN26pXiNaWb
 proxy-groups:
-  - name: "Auto"
-    type: url-test
-    proxies:
-      - Server1-SS
-      - Server2-VLESS
-      - Server3-VLESS
-      - Server4-VLESS
-      - Server5-VLESS
-      - Server6-Trojan
-      - Server7-VLESS
-      - Server8-Trojan
-      - Server9-Trojan
-    url: http://www.gstatic.com/generate_204
-    interval: 30
-
+- interval: 300
+  name: Auto
+  proxies:
+  - VLESS-0
+  - VLESS-1
+  - VLESS-2
+  - Trojan-3
+  - VLESS-4
+  - Trojan-5
+  - VLESS-6
+  - Trojan-7
+  - VLESS-8
+  - SS-9
+  - Trojan-10
+  - Trojan-11
+  - VLESS-12
+  - VLESS-13
+  - VLESS-14
+  - VMESS-15
+  - Trojan-16
+  - Trojan-17
+  - Trojan-18
+  - Trojan-19
+  - Trojan-20
+  - VLESS-21
+  - SS-22
+  - Trojan-23
+  - VLESS-24
+  - SS-25
+  - VLESS-26
+  - Trojan-27
+  - Trojan-28
+  - SS-29
+  - VLESS-30
+  - VLESS-31
+  - Trojan-32
+  - VMESS-33
+  - VLESS-34
+  - VLESS-35
+  - VMESS-36
+  - Trojan-37
+  - SS-38
+  - SS-39
+  - SS-40
+  - Trojan-41
+  - VLESS-42
+  - Trojan-43
+  - Trojan-44
+  - VLESS-45
+  - VLESS-46
+  - VLESS-47
+  - VLESS-48
+  - SS-49
+  - VLESS-50
+  - VLESS-51
+  - VLESS-52
+  - Trojan-53
+  - VLESS-54
+  - VLESS-55
+  - VLESS-56
+  - VLESS-57
+  - VLESS-58
+  - SS-59
+  - VLESS-60
+  - SS-61
+  - VLESS-62
+  - SS-63
+  - VLESS-64
+  - Trojan-65
+  - SS-66
+  - VLESS-67
+  - SS-68
+  - SS-69
+  - VLESS-70
+  - VLESS-71
+  - SS-72
+  - VLESS-73
+  - SS-74
+  - VLESS-75
+  - Trojan-76
+  - SS-77
+  - VLESS-78
+  - VLESS-79
+  - VLESS-80
+  - Trojan-81
+  - Trojan-82
+  - SS-83
+  - SS-84
+  - SS-85
+  - VLESS-86
+  - VLESS-87
+  - SS-88
+  - VLESS-89
+  - VLESS-90
+  - SS-91
+  - VLESS-92
+  - VLESS-93
+  - VLESS-94
+  - SS-95
+  - VLESS-96
+  - SS-97
+  - SS-98
+  - SS-99
+  - Trojan-100
+  - SS-101
+  - SS-102
+  - SS-103
+  - SS-104
+  - SS-105
+  - SS-106
+  - VLESS-107
+  - VLESS-108
+  - Trojan-109
+  - VLESS-110
+  - VLESS-111
+  - VLESS-112
+  - VLESS-113
+  - VLESS-114
+  - VLESS-115
+  - VMESS-116
+  - VLESS-117
+  - VLESS-118
+  - VLESS-119
+  type: url-test
+  url: http://www.gstatic.com/generate_204
 rules:
-  - DOMAIN-SUFFIX,google.com,DIRECT
-  - DOMAIN-SUFFIX,ad.com,REJECT
-  - GEOIP,CN,DIRECT
-  - MATCH,Auto
+- DOMAIN-SUFFIX,google.com,DIRECT
+- DOMAIN-KEYWORD,ads,REJECT
+- GEOIP,CN,DIRECT
+- MATCH,Auto
+socks-port: 7891
